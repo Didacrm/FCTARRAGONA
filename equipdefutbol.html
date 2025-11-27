@@ -2,7 +2,6 @@
 <html lang="ca">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FC Tarragona - Web Oficial</title>
@@ -10,29 +9,33 @@
   <meta name="description" content="Pàgina web oficial de l'FC Tarragona: equip, partits, merchandising i contacte.">
   <meta name="author" content="FC Tarragona">
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+  <!-- CSS propi -->
   <link rel="stylesheet" href="equipfutbol.css">
 
+  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Dades estructurades amb JSON-LD (Sense afectar el validador HTML) -->
+  <!-- Dades estructurades JSON-LD (SportsTeam) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SportsTeam",
     "name": "FC Tarragona",
     "url": "http://www.fctarragona.cat",
-    "logo": "http://www.fctarragona.cat/Imatges/EscutFCTarragona.png"
+    "logo": "http://www.fctarragona.cat/Imatges/EscutFCTarragona.png",
+    "sport": "Futbol"
   }
   </script>
-
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand" href="#inici">
@@ -56,6 +59,7 @@
     </div>
   </nav>
 
+ 
   <header id="inici" class="hero-section">
     <div class="container">
       <div class="row align-items-center g-4">
@@ -118,345 +122,362 @@
     </div>
   </header>
 
-  <main>
+  
+  <main itemscope itemtype="https://schema.org/SportsTeam">
+    <meta itemprop="name" content="FC Tarragona">
+    <meta itemprop="sport" content="Futbol">
     <section id="equip" class="section-padding">
-      <div class="container">
+  <div class="container">
 
-        <div class="text-center mb-4">
-          <h2 class="section-title">La Plantilla 25/26</h2>
-          <p class="section-subtitle">
-            25 jugadors que representen l’orgull de l’FC Tarragona dins i fora del camp.
-          </p>
-        </div>
+    <div class="text-center mb-4">
+      <h2 class="section-title">La Plantilla 25/26</h2>
+      <p class="section-subtitle">
+        25 jugadors que representen l’orgull de l’FC Tarragona dins i fora del camp.
+      </p>
+    </div>
 
-        <h3 class="h5 text-uppercase text-muted mb-2">Porters</h3>
-        <div class="row g-4">
+    
+    <h3 class="h5 text-uppercase text-muted mb-2">Porters</h3>
+    <div class="row g-4">
 
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#1</span>
-              <img src="Imatges/Jugador1.png" class="card-img-top" alt="Marc Pérez">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Marc Pérez</h5>
-                <p class="player-position mb-2">Porter</p>
-                <p class="card-text small">Capità del darrere, reflexos ràpids i gran joc aeri.</p>
-              </div>
-            </article>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#1</span>
+          <img src="Imatges/Jugador1.png" alt="Marc Pérez" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 class="card-title mb-1" itemprop="name">Marc Pérez</h5>
+            <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
+            <p class="card-text small">Capità del darrere, reflexos ràpids i gran joc aeri.</p>
           </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#13</span>
-              <img src="Imatges/Jugador2.png" class="card-img-top" alt="Hugo Carreras">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Hugo Carreras</h5>
-                <p class="player-position mb-2">Porter</p>
-                <p class="card-text small">Jove promesa, segur amb els peus i valent en el mà a mà.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#25</span>
-              <img src="Imatges/Jugador3.png" class="card-img-top" alt="Joel Reverter">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Joel Reverter</h5>
-                <p class="player-position mb-2">Porter</p>
-                <p class="card-text small">Especialista en penals i en situacions límit al final de partit.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Defenses</h3>
-        <div class="row g-4">
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#2</span>
-              <img src="Imatges/Jugador4.png" class="card-img-top" alt="Arnau Vidal">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Arnau Vidal</h5>
-                <p class="player-position mb-2">Lateral dret</p>
-                <p class="card-text small">Defensa intens, incansable per la banda i amb bon centre.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#3</span>
-              <img src="Imatges/Jugador5.png" class="card-img-top" alt="Pau Soldevila">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Pau Soldevila</h5>
-                <p class="player-position mb-2">Central</p>
-                <p class="card-text small">Jerarquia i contundència al joc aeri, referència de la línia defensiva.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#5</span>
-              <img src="Imatges/Jugador6.png" class="card-img-top" alt="Nil Casas">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Nil Casas</h5>
-                <p class="player-position mb-2">Central</p>
-                <p class="card-text small">Elegant amb pilota, iniciador del joc des del darrere.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#12</span>
-              <img src="Imatges/Jugador7.png" class="card-img-top" alt="Roger Serra">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Roger Serra</h5>
-                <p class="player-position mb-2">Lateral esquerre</p>
-                <p class="card-text small">Molt profund en atac, dóna amplitud constant a l’equip.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#18</span>
-              <img src="Imatges/Jugador8.png" class="card-img-top" alt="Àlex Font">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Àlex Font</h5>
-                <p class="player-position mb-2">Defensa polivalent</p>
-                <p class="card-text small">Pot jugar a totes les posicions del darrere amb gran fiabilitat.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#22</span>
-              <img src="Imatges/Jugador9.png" class="card-img-top" alt="Jan Miralles">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Jan Miralles</h5>
-                <p class="player-position mb-2">Central</p>
-                <p class="card-text small">Defensa molt físic, especialista a neutralitzar davanters potents.</p>
-              </div>
-            </article>
-          </div>
-
-        </div>
-
-        <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Migcampistes</h3>
-        <div class="row g-4">
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#6</span>
-              <img src="Imatges/Jugador10.png" class="card-img-top" alt="Joel Garcia">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Joel Garcia</h5>
-                <p class="player-position mb-2">Pivote defensiu</p>
-                <p class="card-text small">Tallador de joc i primer passador, equilibri constant a l’equip.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#8</span>
-              <img src="Imatges/Jugador11.png" class="card-img-top" alt="Pol Sánchez">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Pol Sánchez</h5>
-                <p class="player-position mb-2">Migcampista mixt</p>
-                <p class="card-text small">Treball i arribada a àrea rival, molt complet en totes les facetes.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#10</span>
-              <img src="Imatges/Jugador12.png" class="card-img-top" alt="Ian Rovira">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Ian Rovira</h5>
-                <p class="player-position mb-2">Migcampista ofensiu</p>
-                <p class="card-text small">Creador d’oportunitats, gran visió i passada filtrada.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#14</span>
-              <img src="Imatges/Jugador13.png" class="card-img-top" alt="Bruno Llauradó">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Bruno Llauradó</h5>
-                <p class="player-position mb-2">Interior esquerre</p>
-                <p class="card-text small">Molta qualitat tècnica i xut llunyà per sorprendre el porter.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#16</span>
-              <img src="Imatges/Jugador14.png" class="card-img-top" alt="Adrià Tudó">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Adrià Tudó</h5>
-                <p class="player-position mb-2">Mig centre</p>
-                <p class="card-text small">Ordre tàctic i gran capacitat per recuperar pilotes.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#20</span>
-              <img src="Imatges/Jugador15.png" class="card-img-top" alt="Ferran Colomer">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Ferran Colomer</h5>
-                <p class="player-position mb-2">Migcampista ofensiu</p>
-                <p class="card-text small">Jugador creatiu, molt vertical i amb bon regat en espais reduïts.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#23</span>
-              <img src="Imatges/Jugador16.png" class="card-img-top" alt="Leo Pujol">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Leo Pujol</h5>
-                <p class="player-position mb-2">Interior dret</p>
-                <p class="card-text small">Gran sacrifici defensiu combinat amb arribades de segona línia.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Davanters</h3>
-        <div class="row g-4">
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#7</span>
-              <img src="Imatges/Jugador17.png" class="card-img-top" alt="Èric Soler">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Èric Soler</h5>
-                <p class="player-position mb-2">Davanter centre</p>
-                <p class="card-text small">Golejador de referència, molt fred dins l’àrea rival.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#9</span>
-              <img src="Imatges/Jugador18.png" class="card-img-top" alt="Jordi Ribas">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Jordi Ribas</h5>
-                <p class="player-position mb-2">Davanter</p>
-                <p class="card-text small">Molt potent físicament, domina el joc d’esquena a porteria.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#11</span>
-              <img src="Imatges/Jugador19.png" class="card-img-top" alt="Max Domènech">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Max Domènech</h5>
-                <p class="player-position mb-2">Extrem esquerre</p>
-                <p class="card-text small">Molt ràpid i desequilibrant en el un contra un per banda.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#17</span>
-              <img src="Imatges/Jugador20.png" class="card-img-top" alt="Ricard Vila">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Ricard Vila</h5>
-                <p class="player-position mb-2">Extrem dret</p>
-                <p class="card-text small">Jugador elèctric, sempre buscant el centre o el xut ràpid.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#19</span>
-              <img src="Imatges/Jugador21.png" class="card-img-top" alt="David Requena">
-              <div class="card-body">
-                <h5 class="card-title mb-1">David Requena</h5>
-                <p class="player-position mb-2">Segon punta</p>
-                <p class="card-text small">Molt mòbil entre línies, connecta el mig del camp amb l’atac.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#21</span>
-              <img src="Imatges/Jugador22.png" class="card-img-top" alt="Guillem Roca">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Guillem Roca</h5>
-                <p class="player-position mb-2">Davanter</p>
-                <p class="card-text small">Especialista en rematades de cap i jugades d’estratègia.</p>
-              </div>
-            </article>
-          </div>
-
-        </div>
-
-        <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Joves talents</h3>
-        <div class="row g-4">
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#24</span>
-              <img src="Imatges/Jugador23.png" class="card-img-top" alt="Nil Alamany">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Nil Alamany</h5>
-                <p class="player-position mb-2">Migcampista</p>
-                <p class="card-text small">Format al planter del club, destaca per la seva visió de joc.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#26</span>
-              <img src="Imatges/Jugador24.png" class="card-img-top" alt="Arnau Lluc">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Arnau Lluc</h5>
-                <p class="player-position mb-2">Defensa</p>
-                <p class="card-text small">Jove central amb gran projecció i caràcter competitiu.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card player-card position-relative">
-              <span class="player-number">#27</span>
-              <img src="Imatges/Jugador25.png" class="card-img-top" alt="Gerard Molins">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Gerard Molins</h5>
-                <p class="player-position mb-2">Extrem</p>
-                <p class="card-text small">Aporta frescor des de la banqueta, molt vertical i descarat.</p>
-              </div>
-            </article>
-          </div>
-
-        </div>
-
+        </article>
       </div>
-    </section>
 
-    <section id="merch" class="section-padding bg-light-alt">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#13</span>
+          <img src="Imatges/Jugador2.png" alt="Hugo Carreras" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 class="card-title mb-1" itemprop="name">Hugo Carreras</h5>
+            <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
+            <p class="card-text small">Jove promesa, segur amb els peus i valent en el mà a mà.</p>
+          </div>
+        </article>
+      </div>
+
+      
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#25</span>
+          <img src="Imatges/Jugador3.png" alt="Joel Reverter" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 class="card-title mb-1" itemprop="name">Joel Reverter</h5>
+            <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
+            <p class="card-text small">Especialista en penals i en situacions límit al final de partit.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+   
+    <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Defenses</h3>
+    <div class="row g-4">
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#2</span>
+          <img src="Imatges/Jugador4.png" alt="Arnau Vidal" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name" class="card-title mb-1">Arnau Vidal</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Lateral dret</p>
+            <p class="card-text small">Defensa intens, incansable per la banda i amb bon centre.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#3</span>
+          <img src="Imatges/Jugador5.png" alt="Pau Soldevila" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name" class="card-title mb-1">Pau Soldevila</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Central</p>
+            <p class="card-text small">Jerarquia i contundència al joc aeri.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#5</span>
+          <img src="Imatges/Jugador6.png" alt="Nil Casas" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name" class="card-title mb-1">Nil Casas</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Central</p>
+            <p class="card-text small">Elegant amb pilota, iniciador del joc des del darrere.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#12</span>
+          <img src="Imatges/Jugador7.png" alt="Roger Serra" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name" class="card-title mb-1">Roger Serra</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Lateral esquerre</p>
+            <p class="card-text small">Molt profund en atac, dóna amplitud constant a l’equip.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#18</span>
+          <img src="Imatges/Jugador8.png" alt="Àlex Font" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name" class="card-title mb-1">Àlex Font</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Defensa polivalent</p>
+            <p class="card-text small">Pot jugar a totes les posicions del darrere amb gran fiabilitat.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#22</span>
+          <img src="Imatges/Jugador9.png" alt="Jan Miralles" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name" class="card-title mb-1">Jan Miralles</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Central</p>
+            <p class="card-text small">Especialista a neutralitzar davanters físics.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+   
+
+    <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Migcampistes</h3>
+    <div class="row g-4">
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#6</span>
+          <img src="Imatges/Jugador10.png" alt="Joel Garcia" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Joel Garcia</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Pivote defensiu</p>
+            <p class="card-text small">Tallador de joc i primer passador.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#8</span>
+          <img src="Imatges/Jugador11.png" alt="Pol Sánchez" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Pat Sánchez</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Migcampista mixt</p>
+            <p class="card-text small">Treball i arribada, molt complet.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#10</span>
+          <img src="Imatges/Jugador12.png" alt="Ian Rovira" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Ian Rovira</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Migcampista ofensiu</p>
+            <p class="card-text small">Gran visió i passada filtrada.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#14</span>
+          <img src="Imatges/Jugador13.png" alt="Bruno Llauradó" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Bruno Llauradó</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Interior esquerre</p>
+            <p class="card-text small">Molt bona tècnica i xut llunyà.</p>
+          </div>
+        </article>
+      </div>
+
+      
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#16</span>
+          <img src="Imatges/Jugador14.png" alt="Adrià Tudó" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Adrià Tudó</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Mig centre</p>
+            <p class="card-text small">Ordre tàctic i recuperació.</p>
+          </div>
+        </article>
+      </div>
+
+      
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#20</span>
+          <img src="Imatges/Jugador15.png" alt="Ferran Colomer" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Ferran Colomer</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Migcampista ofensiu</p>
+            <p class="card-text small">Jugador creatiu i molt vertical.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#23</span>
+          <img src="Imatges/Jugador16.png" alt="Leo Pujol" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Leo Pujol</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Interior dret</p>
+            <p class="card-text small">Sacrifici defensiu i arribada.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+
+    <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Davanters</h3>
+    <div class="row g-4">
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#7</span>
+          <img src="Imatges/Jugador17.png" alt="Èric Soler" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Èric Soler</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Davanter centre</p>
+            <p class="card-text small">Golejador de referència.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#9</span>
+          <img src="Imatges/Jugador18.png" alt="Jordi Ribas" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Jordi Ribas</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Davanter</p>
+            <p class="card-text small">Molt potent i domina el joc d’esquena.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#11</span>
+          <img src="Imatges/Jugador19.png" alt="Max Domènech" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Max Domènech</h5>
+            <p itemprop="jobTitle" class="player-position mb-2">Extrem esquerre</p>
+            <p class="card-text small">Ràpid i desequilibrant.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#17</span>
+          <img src="Imatges/Jugador20.png" alt="Ricard Vila" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Ricard Vila</h5>
+            <p itemprop="jobTitle">Extrem dret</p>
+            <p class="card-text small">Jugador molt elèctric.</p>
+          </div>
+        </article>
+      </div>
+
+      
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#19</span>
+          <img src="Imatges/Jugador21.png" alt="David Requena" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">David Requena</h5>
+            <p itemprop="jobTitle">Segon punta</p>
+            <p class="card-text small">Molt mòbil entre línies.</p>
+          </div>
+        </article>
+      </div>
+
+      
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#21</span>
+          <img src="Imatges/Jugador22.png" alt="Guillem Roca" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Guillem Roca</h5>
+            <p itemprop="jobTitle">Davanter</p>
+            <p class="card-text small">Especialista en rematades de cap.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+    
+
+    <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Joves talents</h3>
+    <div class="row g-4">
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#24</span>
+          <img src="Imatges/Jugador23.png" alt="Nil Alamany" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Nil Alamany</h5>
+            <p itemprop="jobTitle">Migcampista</p>
+            <p class="card-text small">Gran visió de joc.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#26</span>
+          <img src="Imatges/Jugador24.png" alt="Arnau Lluc" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Arnau Lluc</h5>
+            <p itemprop="jobTitle">Defensa</p>
+            <p class="card-text small">Caràcter competitiu i projecció.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+          <span class="player-number">#27</span>
+          <img src="Imatges/Jugador25.png" alt="Gerard Molins" class="card-img-top" itemprop="image">
+          <div class="card-body">
+            <h5 itemprop="name">Gerard Molins</h5>
+            <p itemprop="jobTitle">Extrem</p>
+            <p class="card-text small">Vertical i descarat.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section id="merch" class="section-padding bg-light-alt">
       <div class="container">
+
         <div class="text-center mb-4">
           <h2 class="section-title">Merchandising Oficial FC Tarragona</h2>
           <p class="section-subtitle">
@@ -467,17 +488,23 @@
         <div class="row g-4">
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column">
+            <article class="product-card h-100 d-flex flex-column"
+                     itemscope itemtype="https://schema.org/Product">
+
               <div class="product-img-wrapper">
-                <img src="Imatges/Samarretalocal.png" class="img-fluid" alt="Samarreta Local FC Tarragona">
+                <img src="Imatges/Samarretalocal.png"
+                     class="img-fluid"
+                     alt="Samarreta Local FC Tarragona"
+                     itemprop="image">
               </div>
+
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h5 class="mb-0">Samarreta Local 25/26</h5>
-                  <span class="product-price">44,99 €</span>
+                  <h5 class="mb-0" itemprop="name">Samarreta Local 25/26</h5>
+                  <span class="product-price" itemprop="price">44,99 €</span>
                 </div>
 
-                <p class="small mb-3">
+                <p class="small mb-3" itemprop="description">
                   Disseny clàssic vermell amb l’escut al pit. Teixit tècnic transpirable per als partits més intensos.
                 </p>
 
@@ -487,17 +514,23 @@
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column">
+            <article class="product-card h-100 d-flex flex-column"
+                     itemscope itemtype="https://schema.org/Product">
+
               <div class="product-img-wrapper">
-                <img src="Imatges/SamarretaVisitant.png" class="img-fluid" alt="Samarreta Visitant FC Tarragona">
+                <img src="Imatges/SamarretaVisitant.png"
+                     class="img-fluid"
+                     alt="Samarreta Visitant FC Tarragona"
+                     itemprop="image">
               </div>
+
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h5 class="mb-0">Samarreta Visitant</h5>
-                  <span class="product-price">44,99 €</span>
+                  <h5 class="mb-0" itemprop="name">Samarreta Visitant</h5>
+                  <span class="product-price" itemprop="price">44,99 €</span>
                 </div>
 
-                <p class="small mb-3">
+                <p class="small mb-3" itemprop="description">
                   Disseny alternatiu amb detalls grocs i vermells i l’escut al centre.
                 </p>
 
@@ -507,17 +540,23 @@
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column">
+            <article class="product-card h-100 d-flex flex-column"
+                     itemscope itemtype="https://schema.org/Product">
+
               <div class="product-img-wrapper">
-                <img src="Imatges/SamarretaPorter.png" class="img-fluid" alt="Samarreta de porter FC Tarragona">
+                <img src="Imatges/SamarretaPorter.png"
+                     class="img-fluid"
+                     alt="Samarreta de porter FC Tarragona"
+                     itemprop="image">
               </div>
+
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h5 class="mb-0">Samarreta de Porter</h5>
-                  <span class="product-price">49,99 €</span>
+                  <h5 class="mb-0" itemprop="name">Samarreta de Porter</h5>
+                  <span class="product-price" itemprop="price">49,99 €</span>
                 </div>
 
-                <p class="small mb-3">
+                <p class="small mb-3" itemprop="description">
                   Disseny exclusiu per als porters, amb colors diferenciats i l'escut al centre.
                 </p>
 
@@ -527,54 +566,78 @@
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column">
+            <article class="product-card h-100 d-flex flex-column"
+                     itemscope itemtype="https://schema.org/Product">
+
               <div class="product-img-wrapper">
-                <img src="Imatges/BufandaFCTarragona.png" class="img-fluid" alt="Bufanda FC Tarragona">
+                <img src="Imatges/BufandaFCTarragona.png"
+                     class="img-fluid"
+                     alt="Bufanda FC Tarragona"
+                     itemprop="image">
               </div>
+
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h5 class="mb-0">Bufanda Oficial</h5>
-                  <span class="product-price">19,99 €</span>
+                  <h5 class="mb-0" itemprop="name">Bufanda Oficial</h5>
+                  <span class="product-price" itemprop="price">19,99 €</span>
                 </div>
-                <p class="small mb-3">
+
+                <p class="small mb-3" itemprop="description">
                   Bufanda vermella amb el nom del club i l’escut a cada extrem. Ideal per a la graderia.
                 </p>
+
                 <button class="btn btn-cta text-black mt-auto w-100">Afegir a la cistella</button>
               </div>
             </article>
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column">
+            <article class="product-card h-100 d-flex flex-column"
+                     itemscope itemtype="https://schema.org/Product">
+
               <div class="product-img-wrapper">
-                <img src="Imatges/GorraFCTarragona.png" class="img-fluid" alt="Gorra FC Tarragona">
+                <img src="Imatges/GorraFCTarragona.png"
+                     class="img-fluid"
+                     alt="Gorra FC Tarragona"
+                     itemprop="image">
               </div>
+
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h5 class="mb-0">Gorra FC Tarragona</h5>
-                  <span class="product-price">17,99 €</span>
+                  <h5 class="mb-0" itemprop="name">Gorra FC Tarragona</h5>
+                  <span class="product-price" itemprop="price">17,99 €</span>
                 </div>
-                <p class="small mb-3">
+
+                <p class="small mb-3" itemprop="description">
                   Gorra ajustable negra amb l’escut del club brodat al frontal.
                 </p>
+
                 <button class="btn btn-outline-light-custom mt-auto w-100">Veure detalls</button>
               </div>
             </article>
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column">
+            <article class="product-card h-100 d-flex flex-column"
+                     itemscope itemtype="https://schema.org/Product">
+
               <div class="product-img-wrapper d-flex flex-column">
-                <img src="Imatges/MotxillaFCTarragona.png" class="img-fluid" alt="Motxilla FC Tarragona">
+                <img src="Imatges/MotxillaFCTarragona.png"
+                     class="img-fluid"
+                     alt="Motxilla FC Tarragona"
+                     itemprop="image">
               </div>
+
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h5 class="mb-0">Motxilla Oficial</h5>
-                  <span class="product-price">29,99 €</span>
+                  <h5 class="mb-0" itemprop="name">Motxilla Oficial</h5>
+                  <span class="product-price" itemprop="price">29,99 €</span>
                 </div>
-                <p class="small mb-3">
+
+                <p class="small mb-3" itemprop="description">
                   Motxilla esportiva amb l’escut de l’FC Tarragona al centre. Ideal per a entrenaments i viatges.
                 </p>
+
                 <button class="btn btn-cta text-black mt-auto w-100">Afegir a la cistella</button>
               </div>
             </article>
@@ -588,7 +651,6 @@
 
       </div>
     </section>
-
     <section id="sobre" class="section-padding">
       <div class="container">
         <div class="text-center mb-4">
@@ -614,7 +676,9 @@
 
           <div class="col-lg-6">
             <figure>
-              <img src="Imatges/EstadiFCTarragona.jpg" class="img-fluid rounded-4 shadow-sm" alt="Estadi FC Tarragona">
+              <img src="Imatges/EstadiFCTarragona.jpg"
+                   class="img-fluid rounded-4 shadow-sm"
+                   alt="Estadi FC Tarragona">
             </figure>
           </div>
         </div>
@@ -655,7 +719,7 @@
                 <div class="form-check mb-3">
                   <input class="form-check-input" type="checkbox" id="rgpd" required>
                   <label class="form-check-label small" for="rgpd">
-                    Accepto la <a href="#privadesa">Política de privadesa</a> i el tractament de les meves dades d’acord amb el RGPD.
+                    Accepto la <a href="#">Política de privadesa</a> i el tractament de les meves dades d’acord amb el RGPD.
                   </label>
                 </div>
 
@@ -664,20 +728,40 @@
             </div>
           </div>
 
+         
           <aside class="col-lg-6">
-            <div class="h-100 d-flex flex-column justify-content-between">
+            <div class="h-100 d-flex flex-column justify-content-between"
+                 itemscope itemtype="https://schema.org/Organization">
+
+              <meta itemprop="name" content="FC Tarragona">
 
               <div class="mb-4">
                 <h3 class="h5">Informació de contacte</h3>
-                <p class="mb-1"><strong>Adreça:</strong> Estadi Municipal, 43001 Tarragona</p>
-                <p class="mb-1"><strong>Telèfon:</strong> +34 648 457 321</p>
-                <p class="mb-1"><strong>Correu:</strong> info@fctarragona.cat</p>
+
+                <p class="mb-1" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                  <strong>Adreça:</strong>
+                  <span itemprop="streetAddress">Estadi Municipal</span>,
+                  <span itemprop="postalCode">43001</span>
+                  <span itemprop="addressLocality">Tarragona</span>
+                </p>
+
+                <p class="mb-1">
+                  <strong>Telèfon:</strong>
+                  <span itemprop="telephone">+34 648 457 321</span>
+                </p>
+
+                <p class="mb-1">
+                  <strong>Correu:</strong>
+                  <span itemprop="email">info@fctarragona.cat</span>
+                </p>
               </div>
 
               <div>
                 <h3 class="h5 mb-2">On som</h3>
                 <div class="ratio ratio-16x9 rounded-4 shadow-sm">
-                  <iframe src="https://maps.google.com/maps?q=tarragona&t=&z=13&ie=UTF8&iwloc=&output=embed" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  <iframe src="https://maps.google.com/maps?q=tarragona&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                          style="border:0;" loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
               </div>
 
@@ -687,27 +771,30 @@
         </div>
       </div>
     </section>
+    <section id="privadesa" class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title text-center mb-4">Política de privadesa</h2>
 
-  </main>
+        <p><strong>Responsable:</strong> FC Tarragona · Estadi Municipal, 43001 Tarragona · info@fctarragona.cat</p>
+        <p>Aquesta política descriu com es recopilen i tracten les dades personals a través del lloc web oficial del club.</p>
 
-  <section id="privadesa" class="section-padding bg-light">
-    <div class="container">
-      <h2 class="section-title text-center mb-4">Política de privadesa</h2>
+        <h5>Finalitats del tractament</h5>
+        <ul>
+          <li>Gestió de consultes enviades pel formulari.</li>
+          <li>Enviament d'informació del club (amb consentiment).</li>
+          <li>Gestió de compres de merchandising.</li>
+        </ul>
 
-      <p><strong>Responsable:</strong> FC Tarragona · Estadi Municipal, 43001 Tarragona · info@fctarragona.cat</p>
-      <p>Aquesta política descriu com es recopilen i tracten les dades personals a través del lloc web oficial del club.</p>
+        <h5>Drets dels usuaris</h5>
+        <p>Podeu exercir els drets d'accés, rectificació, supressió, oposició i portabilitat enviant un correu a info@fctarragona.cat.</p>
+      </div>
+    </section>
 
-      <h5>Finalitats del tractament</h5>
-      <ul>
-        <li>Gestió de consultes enviades pel formulari.</li>
-        <li>Enviament d'informació del club (amb consentiment).</li>
-        <li>Gestió de compres de merchandising.</li>
-      </ul>
 
-      <h5>Drets dels usuaris</h5>
-      <p>Podeu exercir els drets d'accés, rectificació, supressió, oposició i portabilitat enviant un correu a info@fctarragona.cat.</p>
-    </div>
-  </section>
+  </main> 
+
+
+
 
   <footer>
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
@@ -722,12 +809,14 @@
     </div>
   </footer>
 
-  <div id="cookie-banner" class="cookie-banner" 
-    style="position:fixed; bottom:0; left:0; right:0; background:#262626; 
-           color:#fff; padding:15px; display:none; justify-content:space-between; 
-           align-items:center; z-index:9999; gap:15px;">
+
+  <div id="cookie-banner" class="cookie-banner"
+       style="position:fixed; bottom:0; left:0; right:0; background:#262626;
+              color:#fff; padding:15px; display:none; justify-content:space-between;
+              align-items:center; z-index:9999; gap:15px;">
+
     <p class="m-0">
-      Utilitzem galetes per millorar la navegació i analitzar el trànsit. 
+      Utilitzem galetes per millorar la navegació i analitzar el trànsit.
       Pots acceptar-les o rebutjar-les.
     </p>
 
@@ -737,6 +826,9 @@
     </div>
   </div>
 
+
+  
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -744,20 +836,25 @@
       document.getElementById('cookie-banner').style.display = 'flex';
     }
 
-    document.getElementById('accept-cookies').onclick = function() {
+    document.getElementById('accept-cookies').onclick = function () {
       localStorage.setItem('cookies-accepted', 'yes');
       document.getElementById('cookie-banner').style.display = 'none';
     };
 
-    document.getElementById('reject-cookies').onclick = function() {
+    document.getElementById('reject-cookies').onclick = function () {
       localStorage.setItem('cookies-accepted', 'no');
       document.getElementById('cookie-banner').style.display = 'none';
     };
   </script>
 
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
+
+    
+
+  
 
 

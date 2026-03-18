@@ -9,19 +9,13 @@
   <meta name="description" content="Pàgina web oficial de l'FC Tarragona: equip, partits, merchandising i contacte.">
   <meta name="author" content="FC Tarragona">
 
-  
-  <link 
-  rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  
   <link rel="stylesheet" href="equipfutbol.css">
-
-  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,11 +26,509 @@
     "sport": "Futbol"
   }
   </script>
+
+  <style>
+    /* ── Vídeo promocional ── */
+    .video-section {
+      background: #0a0a0a;
+      padding: 4rem 0;
+    }
+    .video-wrapper {
+      position: relative;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(198,40,40,0.25);
+    }
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+      max-height: 540px;
+      object-fit: cover;
+      background: #111;
+    }
+    .video-overlay-label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(198,40,40,0.9);
+      color: #fff;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    /* ── Podcast ── */
+    .podcast-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 4rem 0;
+      color: #fff;
+    }
+    .podcast-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    .podcast-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--fc-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .podcast-card audio {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .podcast-card audio::-webkit-media-controls-panel {
+      background: rgba(255,255,255,0.1);
+    }
+    .podcast-tag {
+      background: rgba(198,40,40,0.3);
+      border: 1px solid rgba(198,40,40,0.5);
+      color: #ff8a80;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      display: inline-block;
+    }
+
+    /* ── Slideshow / Carrusel ── */
+    .slideshow-section {
+      padding: 4rem 0;
+      background: var(--fc-light);
+    }
+    .slideshow-container {
+      position: relative;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+    .slide {
+      display: none;
+      position: relative;
+    }
+    .slide.active {
+      display: block;
+    }
+    .slide-img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+    /* Diapositives generades via canvas (simulen GIMP) */
+    .slide-canvas-wrapper {
+      width: 100%;
+      height: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.78));
+      color: #fff;
+      padding: 2.5rem 2rem 1.5rem;
+    }
+    .slide-caption h3 {
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .slideshow-controls {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0.75rem;
+      pointer-events: none;
+    }
+    .slide-btn {
+      pointer-events: all;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .slide-btn:hover { background: #fff; }
+    .slide-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .slide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .slide-dot.active {
+      background: var(--fc-red);
+      transform: scale(1.3);
+    }
+    /* Imatge simulada estil GIMP */
+    .promo-slide {
+      width: 100%;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .promo-slide-1 {
+      background: radial-gradient(ellipse at 30% 40%, #C62828 0%, #7B0000 55%, #1a0000 100%);
+    }
+    .promo-slide-2 {
+      background: linear-gradient(135deg, #111 0%, #1c1c1c 40%, #222 60%, #0d0d0d 100%);
+    }
+    .promo-slide-3 {
+      background: radial-gradient(ellipse at 70% 60%, #b71c1c 0%, #880000 40%, #000 100%);
+    }
+    .promo-slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 30px,
+        rgba(255,255,255,0.03) 30px,
+        rgba(255,255,255,0.03) 31px
+      );
+    }
+    .promo-text-main {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+    .promo-text-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+    .promo-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      padding: 0.3rem 1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #fff;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .promo-crest {
+      position: absolute;
+      right: 8%;
+      bottom: -5%;
+      font-size: 10rem;
+      opacity: 0.07;
+      z-index: 0;
+      line-height: 1;
+    }
+    .promo-accent-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      z-index: 0;
+    }
+
+    /* ── Mapa ── */
+    .map-section {
+      padding: 4rem 0;
+      background: #fff;
+    }
+    .map-wrapper {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+    .map-wrapper iframe {
+      border: 0;
+      width: 100%;
+      height: 420px;
+      display: block;
+    }
+    .map-info-card {
+      background: #fff;
+      border-radius: 1.2rem;
+      padding: 1.8rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+      height: 100%;
+    }
+    .map-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1.2rem;
+    }
+    .map-info-icon {
+      width: 36px;
+      height: 36px;
+      background: #ffebee;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Infografia interactiva ── */
+    .infografia-section {
+      padding: 4rem 0;
+      background: linear-gradient(160deg, #fff 0%, #fff5f5 100%);
+    }
+    .infografia-container {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .infografia-tabs {
+      display: flex;
+      border-bottom: 2px solid #f0f0f0;
+      overflow-x: auto;
+    }
+    .inf-tab {
+      flex: 1;
+      min-width: 120px;
+      padding: 1rem 1.2rem;
+      border: none;
+      background: transparent;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+    }
+    .inf-tab.active {
+      color: var(--fc-red);
+      border-bottom-color: var(--fc-red);
+    }
+    .inf-tab:hover:not(.active) {
+      color: #444;
+      background: #fafafa;
+    }
+    .inf-panel {
+      display: none;
+      padding: 2rem;
+      animation: fadeInUp 0.3s ease;
+    }
+    .inf-panel.active {
+      display: block;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* Stat bars */
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+    .stat-label {
+      min-width: 140px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #444;
+    }
+    .stat-bar-wrap {
+      flex: 1;
+      background: #f0f0f0;
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .stat-bar {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--fc-red);
+      width: 0;
+      transition: width 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    .stat-val {
+      min-width: 40px;
+      text-align: right;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--fc-red);
+    }
+    /* Values cards */
+    .valor-card {
+      background: #fafafa;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid #f0f0f0;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .valor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(198,40,40,0.12);
+      border-color: var(--fc-red);
+    }
+    .valor-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.6rem;
+    }
+    .valor-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .valor-desc {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    /* Timeline */
+    .timeline-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 0.8rem;
+      transition: background 0.2s;
+    }
+    .timeline-item:hover { background: #fafafa; }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--fc-red);
+      margin-top: 4px;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(198,40,40,0.15);
+    }
+    .timeline-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .timeline-connector {
+      width: 2px;
+      flex: 1;
+      background: #e0e0e0;
+      margin-top: 4px;
+    }
+    .timeline-year {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--fc-red);
+    }
+    .timeline-event {
+      font-size: 0.9rem;
+      color: #444;
+    }
+    /* Serveis grid */
+    .servei-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 0.8rem;
+      border: 1px solid #eee;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .servei-item:hover {
+      border-color: var(--fc-red);
+      background: #fff5f5;
+    }
+    .servei-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--fc-red);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .servei-text strong {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .servei-text p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
 </head>
 
 <body>
 
-  
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand" href="#inici">
@@ -44,7 +536,8 @@
         <span>FC</span> <span class="text-dark">Tarragona</span>
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Canviar navegació">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar" aria-expanded="false" aria-label="Canviar navegació">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -60,7 +553,6 @@
     </div>
   </nav>
 
- 
   <header id="inici" class="hero-section">
     <div class="container">
       <div class="row align-items-center g-4">
@@ -73,12 +565,13 @@
           </h1>
 
           <p class="hero-subtitle mb-4">
-            Benvinguts a la pàgina oficial de l’FC Tarragona. Consulta els últims partits, descobreix la plantilla i aconsegueix el millor merchandising del club.
+            Benvinguts a la pàgina oficial de l'FC Tarragona. Consulta els últims partits, descobreix la plantilla
+            i aconsegueix el millor merchandising del club.
           </p>
 
           <div class="d-flex flex-wrap gap-2">
             <a href="#merch" class="btn btn-cta text-white">Veure Merchandising</a>
-            <a href="#equip" class="btn btn-outline-light-custom">Veure l’equip</a>
+            <a href="#equip" class="btn btn-outline-light-custom">Veure l'equip</a>
           </div>
         </div>
 
@@ -97,9 +590,7 @@
                 <div class="match-team">FC TARRAGONA</div>
                 <small>Local</small>
               </div>
-
               <div class="match-vs">VS</div>
-
               <div class="text-center">
                 <div class="match-team">RIVALS CF</div>
                 <small>Visitant</small>
@@ -115,7 +606,6 @@
               </div>
               <button class="btn btn-sm btn-outline-light-custom">Calendari complet</button>
             </div>
-
           </div>
         </div>
 
@@ -123,522 +613,612 @@
     </div>
   </header>
 
-  
+  <!-- ══════════════════════════════════════════════════════════
+       2.1 · VÍDEO PROMOCIONAL
+  ══════════════════════════════════════════════════════════ -->
+  <section id="video-promo" class="video-section">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title text-white">Vídeo Promocional</h2>
+        <p class="text-secondary">Descobreix l'essència de l'FC Tarragona en el nostre vídeo oficial de la temporada 25/26.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="video-wrapper">
+            <span class="video-overlay-label">🎬 Temporada 25/26</span>
+            <!-- 
+              INSTRUCCIÓ PER A L'ALUMNE:
+              Substitueix "Video/VideoPromo.mp4" pel camí real del teu vídeo
+              editat amb DaVinci Resolve / Shotcut / Adobe Premiere.
+              El vídeo ha de tenir: mínim 3 clips, música de fons, locució,
+              efectes (zoom, textos animats, logotip, etc.)
+              Durada: entre 30 s i 3 min.
+            -->
+            <video
+              controls
+              preload="metadata"
+              poster="Imatges/EstadiFCTarragona.jpg"
+              style="background:#000;">
+              <source src="Video/VideoPromoFCTarragona.mp4" type="video/mp4">
+              <!-- Alternativa WebM per a compatibilitat -->
+              <source src="Video/VideoPromoFCTarragona.webm" type="video/webm">
+              El teu navegador no suporta vídeo HTML5.
+              <a href="Video/VideoPromoFCTarragona.mp4" style="color:#fff">Descarrega el vídeo.</a>
+            </video>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2.2 · PODCAST CORPORATIU
+  ══════════════════════════════════════════════════════════ -->
+  <section id="podcast" class="podcast-section">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title text-white">Podcast Corporatiu</h2>
+        <p style="color:rgba(255,255,255,0.6);">La veu de l'FC Tarragona: visió, objectius i identitat del club.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="podcast-card">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="podcast-icon">🎙️</div>
+              <div>
+                <span class="podcast-tag mb-1">Podcast · Episodi 1</span>
+                <h4 class="text-white mb-0 mt-1" style="font-weight:800;">El Club, la Passió i el Futur</h4>
+                <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin:0;">FC Tarragona · Temporada 25/26</p>
+              </div>
+            </div>
+
+            <!-- 
+              INSTRUCCIÓ PER A L'ALUMNE:
+              Substitueix "Audio/PodcastFCTarragona.mp3" pel camí real del teu àudio.
+              El podcast ha d'explicar: visió corporativa, objectius i identitat del club.
+            -->
+            <audio controls preload="metadata" style="width:100%;margin-bottom:1rem;">
+              <source src="Audio/PodcastFCTarragona.mp3" type="audio/mpeg">
+              <source src="Audio/PodcastFCTarragona.ogg" type="audio/ogg">
+              El teu navegador no suporta àudio HTML5.
+              <a href="Audio/PodcastFCTarragona.mp3" style="color:#fff">Descarrega l'àudio.</a>
+            </audio>
+
+            <div class="row g-2 mt-1" style="font-size:0.82rem;">
+              <div class="col-4 text-center">
+                <div style="color:rgba(255,255,255,0.4);text-transform:uppercase;font-size:0.72rem;letter-spacing:0.1em;">Contingut</div>
+                <div style="color:rgba(255,255,255,0.85);">Visió corporativa</div>
+              </div>
+              <div class="col-4 text-center">
+                <div style="color:rgba(255,255,255,0.4);text-transform:uppercase;font-size:0.72rem;letter-spacing:0.1em;">Objectius</div>
+                <div style="color:rgba(255,255,255,0.85);">Temporada 25/26</div>
+              </div>
+              <div class="col-4 text-center">
+                <div style="color:rgba(255,255,255,0.4);text-transform:uppercase;font-size:0.72rem;letter-spacing:0.1em;">Identitat</div>
+                <div style="color:rgba(255,255,255,0.85);">Valors del club</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2.3 · SLIDESHOW / CARRUSEL D'IMATGES
+  ══════════════════════════════════════════════════════════ -->
+  <section id="slideshow" class="slideshow-section">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Galeria Promocional</h2>
+        <p class="section-subtitle">Imatges promocionals editades amb GIMP: capes, efectes visuals i composició gràfica.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="slideshow-container">
+
+            <!-- Diapositiva 1 -->
+            <div class="slide active">
+              <!--
+                INSTRUCCIÓ: Si tens la imatge GIMP exportada, substitueix per:
+                <img src="Imatges/Promo1.jpg" class="slide-img" alt="Promo 1">
+                Les imatges de sota simulen les composicions fins que les tinguis llestes.
+              -->
+              <div class="promo-slide promo-slide-1">
+                <span class="promo-accent-circle" style="width:300px;height:300px;top:-80px;left:-80px;"></span>
+                <span class="promo-accent-circle" style="width:200px;height:200px;bottom:-50px;right:-50px;"></span>
+                <span class="promo-crest">⚽</span>
+                <div class="promo-badge">Temporada 25/26</div>
+                <div class="promo-text-main">Som FC<br>Tarragona</div>
+                <div class="promo-text-sub">El club de la ciutat · Des de 1920</div>
+              </div>
+            </div>
+
+            <!-- Diapositiva 2 -->
+            <div class="slide">
+              <div class="promo-slide promo-slide-2">
+                <span class="promo-accent-circle" style="width:250px;height:250px;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(198,40,40,0.08);"></span>
+                <span class="promo-crest">🏆</span>
+                <div class="promo-badge">Merchandising Oficial</div>
+                <div class="promo-text-main">Vesteix<br><span style="color:#C62828;">els colors</span></div>
+                <div class="promo-text-sub">Samarreta local · Samarreta visitant · Accessoris</div>
+              </div>
+            </div>
+
+            <div class="slide">
+              <div class="promo-slide promo-slide-3">
+                <span class="promo-accent-circle" style="width:400px;height:400px;bottom:-150px;right:-100px;background:rgba(255,255,255,0.04);"></span>
+                <span class="promo-crest">🏟️</span>
+                <div class="promo-badge">Vine a l'estadi</div>
+                <div class="promo-text-main">Junts<br>Som Més</div>
+                <div class="promo-text-sub">Estadi Municipal · Tarragona</div>
+              </div>
+            </div>
+
+            <div class="slideshow-controls">
+              <button class="slide-btn" id="prevSlide" aria-label="Anterior">&#8592;</button>
+              <button class="slide-btn" id="nextSlide" aria-label="Següent">&#8594;</button>
+            </div>
+          </div>
+
+          <!-- Dots -->
+          <div class="slide-dots" id="slideDots">
+            <button class="slide-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="slide-dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="slide-dot" data-index="2" aria-label="Slide 3"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIP (secció original) -->
   <main itemscope itemtype="https://schema.org/SportsTeam">
     <meta itemprop="name" content="FC Tarragona">
     <meta itemprop="sport" content="Futbol">
+
     <section id="equip" class="section-padding">
-  <div class="container">
+      <div class="container">
 
-    <div class="text-center mb-4">
-      <h2 class="section-title">La Plantilla 25/26</h2>
-      <p class="section-subtitle">
-        25 jugadors que representen l’orgull de l’FC Tarragona dins i fora del camp.
-      </p>
-    </div>
+        <div class="text-center mb-4">
+          <h2 class="section-title">La Plantilla 25/26</h2>
+          <p class="section-subtitle">25 jugadors que representen l'orgull de l'FC Tarragona dins i fora del camp.</p>
+        </div>
 
-    
-    <h3 class="h5 text-uppercase text-muted mb-2">Porters</h3>
-    <div class="row g-4">
+        <h3 class="h5 text-uppercase text-muted mb-2">Porters</h3>
+        <div class="row g-4">
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#1</span>
-          <img src="Imatges/Jugador1.png" alt="Marc Pérez" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 class="card-title mb-1" itemprop="name">Marc Pérez</h5>
-            <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
-            <p class="card-text small">Capità del darrere, reflexos ràpids i gran joc aeri.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#1</span>
+              <img src="Imatges/Jugador1.png" alt="Marc Pérez" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 class="card-title mb-1" itemprop="name">Marc Pérez</h5>
+                <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
+                <p class="card-text small">Capità del darrere, reflexos ràpids i gran joc aeri.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#13</span>
-          <img src="Imatges/Jugador2.png" alt="Hugo Carreras" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 class="card-title mb-1" itemprop="name">Hugo Carreras</h5>
-            <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
-            <p class="card-text small">Jove promesa, segur amb els peus i valent en el mà a mà.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#13</span>
+              <img src="Imatges/Jugador2.png" alt="Hugo Carreras" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 class="card-title mb-1" itemprop="name">Hugo Carreras</h5>
+                <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
+                <p class="card-text small">Jove promesa, segur amb els peus i valent en el mà a mà.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#25</span>
-          <img src="Imatges/Jugador3.png" alt="Joel Reverter" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 class="card-title mb-1" itemprop="name">Joel Reverter</h5>
-            <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
-            <p class="card-text small">Especialista en penals i en situacions límit al final de partit.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#25</span>
+              <img src="Imatges/Jugador3.png" alt="Joel Reverter" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 class="card-title mb-1" itemprop="name">Joel Reverter</h5>
+                <p class="player-position mb-2" itemprop="jobTitle">Porter</p>
+                <p class="card-text small">Especialista en penals i en situacions límit al final de partit.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-    </div>
+        </div>
 
-   
-    <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Defenses</h3>
-    <div class="row g-4">
+        <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Defenses</h3>
+        <div class="row g-4">
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#2</span>
-          <img src="Imatges/Jugador4.png" alt="Arnau Vidal" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name" class="card-title mb-1">Arnau Vidal</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Lateral dret</p>
-            <p class="card-text small">Defensa intens, incansable per la banda i amb bon centre.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#2</span>
+              <img src="Imatges/Jugador4.png" alt="Arnau Vidal" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name" class="card-title mb-1">Arnau Vidal</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Lateral dret</p>
+                <p class="card-text small">Defensa intens, incansable per la banda i amb bon centre.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#3</span>
-          <img src="Imatges/Jugador5.png" alt="Pau Soldevila" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name" class="card-title mb-1">Pau Soldevila</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Central</p>
-            <p class="card-text small">Jerarquia i contundència al joc aeri.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#3</span>
+              <img src="Imatges/Jugador5.png" alt="Pau Soldevila" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name" class="card-title mb-1">Pau Soldevila</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Central</p>
+                <p class="card-text small">Jerarquia i contundència al joc aeri.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#5</span>
-          <img src="Imatges/Jugador6.png" alt="Nil Casas" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name" class="card-title mb-1">Nil Casas</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Central</p>
-            <p class="card-text small">Elegant amb pilota, iniciador del joc des del darrere.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#5</span>
+              <img src="Imatges/Jugador6.png" alt="Nil Casas" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name" class="card-title mb-1">Nil Casas</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Central</p>
+                <p class="card-text small">Elegant amb pilota, iniciador del joc des del darrere.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#12</span>
-          <img src="Imatges/Jugador7.png" alt="Roger Serra" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name" class="card-title mb-1">Roger Serra</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Lateral esquerre</p>
-            <p class="card-text small">Molt profund en atac, dóna amplitud constant a l’equip.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#12</span>
+              <img src="Imatges/Jugador7.png" alt="Roger Serra" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name" class="card-title mb-1">Roger Serra</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Lateral esquerre</p>
+                <p class="card-text small">Molt profund en atac, dóna amplitud constant a l'equip.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#18</span>
-          <img src="Imatges/Jugador8.png" alt="Àlex Font" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name" class="card-title mb-1">Àlex Font</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Defensa polivalent</p>
-            <p class="card-text small">Pot jugar a totes les posicions del darrere amb gran fiabilitat.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#18</span>
+              <img src="Imatges/Jugador8.png" alt="Àlex Font" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name" class="card-title mb-1">Àlex Font</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Defensa polivalent</p>
+                <p class="card-text small">Pot jugar a totes les posicions del darrere amb gran fiabilitat.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#22</span>
-          <img src="Imatges/Jugador9.png" alt="Jan Miralles" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name" class="card-title mb-1">Jan Miralles</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Central</p>
-            <p class="card-text small">Especialista a neutralitzar davanters físics.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#22</span>
+              <img src="Imatges/Jugador9.png" alt="Jan Miralles" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name" class="card-title mb-1">Jan Miralles</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Central</p>
+                <p class="card-text small">Especialista a neutralitzar davanters físics.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-    </div>
+        </div>
 
-   
+        <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Migcampistes</h3>
+        <div class="row g-4">
 
-    <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Migcampistes</h3>
-    <div class="row g-4">
-
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#6</span>
-          <img src="Imatges/Jugador10.png" alt="Joel Garcia" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Joel Garcia</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Pivote defensiu</p>
-            <p class="card-text small">Tallador de joc i primer passador.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#6</span>
+              <img src="Imatges/Jugador10.png" alt="Joel Garcia" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Joel Garcia</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Pivote defensiu</p>
+                <p class="card-text small">Tallador de joc i primer passador.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#8</span>
-          <img src="Imatges/Jugador11.png" alt="Pol Sánchez" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Pat Sánchez</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Migcampista mixt</p>
-            <p class="card-text small">Treball i arribada, molt complet.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#8</span>
+              <img src="Imatges/Jugador11.png" alt="Pol Sánchez" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Pol Sánchez</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Migcampista mixt</p>
+                <p class="card-text small">Treball i arribada, molt complet.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#10</span>
-          <img src="Imatges/Jugador12.png" alt="Ian Rovira" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Ian Rovira</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Migcampista ofensiu</p>
-            <p class="card-text small">Gran visió i passada filtrada.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#10</span>
+              <img src="Imatges/Jugador12.png" alt="Ian Rovira" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Ian Rovira</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Migcampista ofensiu</p>
+                <p class="card-text small">Gran visió i passada filtrada.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#14</span>
-          <img src="Imatges/Jugador13.png" alt="Bruno Llauradó" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Bruno Llauradó</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Interior esquerre</p>
-            <p class="card-text small">Molt bona tècnica i xut llunyà.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#14</span>
+              <img src="Imatges/Jugador13.png" alt="Bruno Llauradó" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Bruno Llauradó</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Interior esquerre</p>
+                <p class="card-text small">Molt bona tècnica i xut llunyà.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#16</span>
-          <img src="Imatges/Jugador14.png" alt="Adrià Tudó" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Adrià Tudó</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Mig centre</p>
-            <p class="card-text small">Ordre tàctic i recuperació.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#16</span>
+              <img src="Imatges/Jugador14.png" alt="Adrià Tudó" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Adrià Tudó</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Mig centre</p>
+                <p class="card-text small">Ordre tàctic i recuperació.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#20</span>
-          <img src="Imatges/Jugador15.png" alt="Ferran Colomer" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Ferran Colomer</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Migcampista ofensiu</p>
-            <p class="card-text small">Jugador creatiu i molt vertical.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#20</span>
+              <img src="Imatges/Jugador15.png" alt="Ferran Colomer" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Ferran Colomer</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Migcampista ofensiu</p>
+                <p class="card-text small">Jugador creatiu i molt vertical.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#23</span>
-          <img src="Imatges/Jugador16.png" alt="Leo Pujol" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Leo Pujol</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Interior dret</p>
-            <p class="card-text small">Sacrifici defensiu i arribada.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#23</span>
+              <img src="Imatges/Jugador16.png" alt="Leo Pujol" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Leo Pujol</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Interior dret</p>
+                <p class="card-text small">Sacrifici defensiu i arribada.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-    </div>
+        </div>
 
+        <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Davanters</h3>
+        <div class="row g-4">
 
-    <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Davanters</h3>
-    <div class="row g-4">
-
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#7</span>
-          <img src="Imatges/Jugador17.png" alt="Èric Soler" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Èric Soler</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Davanter centre</p>
-            <p class="card-text small">Golejador de referència.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#7</span>
+              <img src="Imatges/Jugador17.png" alt="Èric Soler" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Èric Soler</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Davanter centre</p>
+                <p class="card-text small">Golejador de referència.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#9</span>
-          <img src="Imatges/Jugador18.png" alt="Jordi Ribas" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Jordi Ribas</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Davanter</p>
-            <p class="card-text small">Molt potent i domina el joc d’esquena.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#9</span>
+              <img src="Imatges/Jugador18.png" alt="Jordi Ribas" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Jordi Ribas</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Davanter</p>
+                <p class="card-text small">Molt potent i domina el joc d'esquena.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#11</span>
-          <img src="Imatges/Jugador19.png" alt="Max Domènech" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Max Domènech</h5>
-            <p itemprop="jobTitle" class="player-position mb-2">Extrem esquerre</p>
-            <p class="card-text small">Ràpid i desequilibrant.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#11</span>
+              <img src="Imatges/Jugador19.png" alt="Max Domènech" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Max Domènech</h5>
+                <p itemprop="jobTitle" class="player-position mb-2">Extrem esquerre</p>
+                <p class="card-text small">Ràpid i desequilibrant.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#17</span>
-          <img src="Imatges/Jugador20.png" alt="Ricard Vila" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Ricard Vila</h5>
-            <p itemprop="jobTitle">Extrem dret</p>
-            <p class="card-text small">Jugador molt elèctric.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#17</span>
+              <img src="Imatges/Jugador20.png" alt="Ricard Vila" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Ricard Vila</h5>
+                <p itemprop="jobTitle">Extrem dret</p>
+                <p class="card-text small">Jugador molt elèctric.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#19</span>
-          <img src="Imatges/Jugador21.png" alt="David Requena" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">David Requena</h5>
-            <p itemprop="jobTitle">Segon punta</p>
-            <p class="card-text small">Molt mòbil entre línies.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#19</span>
+              <img src="Imatges/Jugador21.png" alt="David Requena" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">David Requena</h5>
+                <p itemprop="jobTitle">Segon punta</p>
+                <p class="card-text small">Molt mòbil entre línies.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#21</span>
-          <img src="Imatges/Jugador22.png" alt="Guillem Roca" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Guillem Roca</h5>
-            <p itemprop="jobTitle">Davanter</p>
-            <p class="card-text small">Especialista en rematades de cap.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#21</span>
+              <img src="Imatges/Jugador22.png" alt="Guillem Roca" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Guillem Roca</h5>
+                <p itemprop="jobTitle">Davanter</p>
+                <p class="card-text small">Especialista en rematades de cap.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-    </div>
+        </div>
 
-    
+        <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Joves talents</h3>
+        <div class="row g-4">
 
-    <h3 class="h5 text-uppercase text-muted mt-4 mb-2">Joves talents</h3>
-    <div class="row g-4">
-
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#24</span>
-          <img src="Imatges/Jugador23.png" alt="Nil Alamany" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Nil Alamany</h5>
-            <p itemprop="jobTitle">Migcampista</p>
-            <p class="card-text small">Gran visió de joc.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#24</span>
+              <img src="Imatges/Jugador23.png" alt="Nil Alamany" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Nil Alamany</h5>
+                <p itemprop="jobTitle">Migcampista</p>
+                <p class="card-text small">Gran visió de joc.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#26</span>
-          <img src="Imatges/Jugador24.png" alt="Arnau Lluc" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Arnau Lluc</h5>
-            <p itemprop="jobTitle">Defensa</p>
-            <p class="card-text small">Caràcter competitiu i projecció.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#26</span>
+              <img src="Imatges/Jugador24.png" alt="Arnau Lluc" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Arnau Lluc</h5>
+                <p itemprop="jobTitle">Defensa</p>
+                <p class="card-text small">Caràcter competitiu i projecció.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
 
-      <div class="col-12 col-sm-6 col-lg-3">
-        <article class="card player-card" itemscope itemtype="https://schema.org/Person">
-          <span class="player-number">#27</span>
-          <img src="Imatges/Jugador25.png" alt="Gerard Molins" class="card-img-top" itemprop="image">
-          <div class="card-body">
-            <h5 itemprop="name">Gerard Molins</h5>
-            <p itemprop="jobTitle">Extrem</p>
-            <p class="card-text small">Vertical i descarat.</p>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="card player-card" itemscope itemtype="https://schema.org/Person">
+              <span class="player-number">#27</span>
+              <img src="Imatges/Jugador25.png" alt="Gerard Molins" class="card-img-top" itemprop="image">
+              <div class="card-body">
+                <h5 itemprop="name">Gerard Molins</h5>
+                <p itemprop="jobTitle">Extrem</p>
+                <p class="card-text small">Vertical i descarat.</p>
+              </div>
+            </article>
           </div>
-        </article>
+
+        </div>
+
       </div>
+    </section>
 
-    </div>
-
-  </div>
-</section>
-<section id="merch" class="section-padding bg-light-alt">
+    <section id="merch" class="section-padding bg-light-alt">
       <div class="container">
 
         <div class="text-center mb-4">
           <h2 class="section-title">Merchandising Oficial FC Tarragona</h2>
-          <p class="section-subtitle">
-            Productes oficials amb l’escut de l’FC Tarragona. Dissenyats per a l’afició més fidel.
-          </p>
+          <p class="section-subtitle">Productes oficials amb l'escut de l'FC Tarragona. Dissenyats per a l'afició més fidel.</p>
         </div>
 
         <div class="row g-4">
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column"
-                     itemscope itemtype="https://schema.org/Product">
-
+            <article class="product-card h-100 d-flex flex-column" itemscope itemtype="https://schema.org/Product">
               <div class="product-img-wrapper">
-                <img src="Imatges/Samarretalocal.png"
-                     class="img-fluid"
-                     alt="Samarreta Local FC Tarragona"
-                     itemprop="image">
+                <img src="Imatges/Samarretalocal.png" class="img-fluid" alt="Samarreta Local FC Tarragona" itemprop="image">
               </div>
-
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                   <h5 class="mb-0" itemprop="name">Samarreta Local 25/26</h5>
                   <span class="product-price" itemprop="price">44,99 €</span>
                 </div>
-
-                <p class="small mb-3" itemprop="description">
-                  Disseny clàssic vermell amb l’escut al pit. Teixit tècnic transpirable per als partits més intensos.
-                </p>
-
+                <p class="small mb-3" itemprop="description">Disseny clàssic vermell amb l'escut al pit. Teixit tècnic transpirable per als partits més intensos.</p>
                 <button class="btn btn-cta text-black mt-auto w-100">Afegir a la cistella</button>
               </div>
             </article>
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column"
-                     itemscope itemtype="https://schema.org/Product">
-
+            <article class="product-card h-100 d-flex flex-column" itemscope itemtype="https://schema.org/Product">
               <div class="product-img-wrapper">
-                <img src="Imatges/SamarretaVisitant.png"
-                     class="img-fluid"
-                     alt="Samarreta Visitant FC Tarragona"
-                     itemprop="image">
+                <img src="Imatges/SamarretaVisitant.png" class="img-fluid" alt="Samarreta Visitant FC Tarragona" itemprop="image">
               </div>
-
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                   <h5 class="mb-0" itemprop="name">Samarreta Visitant</h5>
                   <span class="product-price" itemprop="price">44,99 €</span>
                 </div>
-
-                <p class="small mb-3" itemprop="description">
-                  Disseny alternatiu amb detalls grocs i vermells i l’escut al centre.
-                </p>
-
+                <p class="small mb-3" itemprop="description">Disseny alternatiu amb detalls grocs i vermells i l'escut al centre.</p>
                 <button class="btn btn-outline-light-custom mt-auto w-100">Veure detalls</button>
               </div>
             </article>
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column"
-                     itemscope itemtype="https://schema.org/Product">
-
+            <article class="product-card h-100 d-flex flex-column" itemscope itemtype="https://schema.org/Product">
               <div class="product-img-wrapper">
-                <img src="Imatges/SamarretaPorter.png"
-                     class="img-fluid"
-                     alt="Samarreta de porter FC Tarragona"
-                     itemprop="image">
+                <img src="Imatges/SamarretaPorter.png" class="img-fluid" alt="Samarreta de porter FC Tarragona" itemprop="image">
               </div>
-
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                   <h5 class="mb-0" itemprop="name">Samarreta de Porter</h5>
                   <span class="product-price" itemprop="price">49,99 €</span>
                 </div>
-
-                <p class="small mb-3" itemprop="description">
-                  Disseny exclusiu per als porters, amb colors diferenciats i l'escut al centre.
-                </p>
-
+                <p class="small mb-3" itemprop="description">Disseny exclusiu per als porters, amb colors diferenciats i l'escut al centre.</p>
                 <button class="btn btn-cta text-black mt-auto w-100">Afegir a la cistella</button>
               </div>
             </article>
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column"
-                     itemscope itemtype="https://schema.org/Product">
-
+            <article class="product-card h-100 d-flex flex-column" itemscope itemtype="https://schema.org/Product">
               <div class="product-img-wrapper">
-                <img src="Imatges/BufandaFCTarragona.png"
-                     class="img-fluid"
-                     alt="Bufanda FC Tarragona"
-                     itemprop="image">
+                <img src="Imatges/BufandaFCTarragona.png" class="img-fluid" alt="Bufanda FC Tarragona" itemprop="image">
               </div>
-
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                   <h5 class="mb-0" itemprop="name">Bufanda Oficial</h5>
                   <span class="product-price" itemprop="price">19,99 €</span>
                 </div>
-
-                <p class="small mb-3" itemprop="description">
-                  Bufanda vermella amb el nom del club i l’escut a cada extrem. Ideal per a la graderia.
-                </p>
-
+                <p class="small mb-3" itemprop="description">Bufanda vermella amb el nom del club i l'escut a cada extrem. Ideal per a la graderia.</p>
                 <button class="btn btn-cta text-black mt-auto w-100">Afegir a la cistella</button>
               </div>
             </article>
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column"
-                     itemscope itemtype="https://schema.org/Product">
-
+            <article class="product-card h-100 d-flex flex-column" itemscope itemtype="https://schema.org/Product">
               <div class="product-img-wrapper">
-                <img src="Imatges/GorraFCTarragona.png"
-                     class="img-fluid"
-                     alt="Gorra FC Tarragona"
-                     itemprop="image">
+                <img src="Imatges/GorraFCTarragona.png" class="img-fluid" alt="Gorra FC Tarragona" itemprop="image">
               </div>
-
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                   <h5 class="mb-0" itemprop="name">Gorra FC Tarragona</h5>
                   <span class="product-price" itemprop="price">17,99 €</span>
                 </div>
-
-                <p class="small mb-3" itemprop="description">
-                  Gorra ajustable negra amb l’escut del club brodat al frontal.
-                </p>
-
+                <p class="small mb-3" itemprop="description">Gorra ajustable negra amb l'escut del club brodat al frontal.</p>
                 <button class="btn btn-outline-light-custom mt-auto w-100">Veure detalls</button>
               </div>
             </article>
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
-            <article class="product-card h-100 d-flex flex-column"
-                     itemscope itemtype="https://schema.org/Product">
-
-              <div class="product-img-wrapper d-flex flex-column">
-                <img src="Imatges/MotxillaFCTarragona.png"
-                     class="img-fluid"
-                     alt="Motxilla FC Tarragona"
-                     itemprop="image">
+            <article class="product-card h-100 d-flex flex-column" itemscope itemtype="https://schema.org/Product">
+              <div class="product-img-wrapper">
+                <img src="Imatges/MotxillaFCTarragona.png" class="img-fluid" alt="Motxilla FC Tarragona" itemprop="image">
               </div>
-
               <div class="p-3 d-flex flex-column flex-grow-1">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                   <h5 class="mb-0" itemprop="name">Motxilla Oficial</h5>
                   <span class="product-price" itemprop="price">29,99 €</span>
                 </div>
-
-                <p class="small mb-3" itemprop="description">
-                  Motxilla esportiva amb l’escut de l’FC Tarragona al centre. Ideal per a entrenaments i viatges.
-                </p>
-
+                <p class="small mb-3" itemprop="description">Motxilla esportiva amb l'escut de l'FC Tarragona al centre. Ideal per a entrenaments i viatges.</p>
                 <button class="btn btn-cta text-black mt-auto w-100">Afegir a la cistella</button>
               </div>
             </article>
@@ -652,6 +1232,7 @@
 
       </div>
     </section>
+
     <section id="sobre" class="section-padding">
       <div class="container">
         <div class="text-center mb-4">
@@ -661,26 +1242,353 @@
         <div class="row g-4 align-items-center">
           <div class="col-lg-6">
             <div class="about-box">
-              <p>
-                L’FC Tarragona és un club de futbol arrelat a la ciutat i compromès amb la formació de jugadors i jugadores des de les categories base fins al primer equip.
-              </p>
-              <p>
-                El nostre objectiu és fomentar valors com el respecte, l’esforç i el treball en equip, tant dins com fora del terreny de joc. A través d’aquesta web volem acostar encara més el club a l’afició.
-              </p>
+              <p>L'FC Tarragona és un club de futbol arrelat a la ciutat i compromès amb la formació de jugadors i jugadores des de les categories base fins al primer equip.</p>
+              <p>El nostre objectiu és fomentar valors com el respecte, l'esforç i el treball en equip, tant dins com fora del terreny de joc. A través d'aquesta web volem acostar encara més el club a l'afició.</p>
               <ul class="list-unstyled mt-3">
                 <li>· Compromís amb el futbol base</li>
                 <li>· Desenvolupament esportiu i personal</li>
-                <li>· Vincle amb la ciutat i l’afició</li>
+                <li>· Vincle amb la ciutat i l'afició</li>
               </ul>
             </div>
           </div>
 
           <div class="col-lg-6">
             <figure>
-              <img src="Imatges/EstadiFCTarragona.jpg"
-                   class="img-fluid rounded-4 shadow-sm"
-                   alt="Estadi FC Tarragona">
+              <img src="Imatges/EstadiFCTarragona.jpg" class="img-fluid rounded-4 shadow-sm" alt="Estadi FC Tarragona">
             </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="infografia" class="infografia-section">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-title">Infografia Interactiva</h2>
+          <p class="section-subtitle">Coneix l'FC Tarragona: estadístiques, valors, història i serveis del club.</p>
+        </div>
+
+        <div class="infografia-container">
+          <!-- Tabs -->
+          <div class="infografia-tabs" role="tablist">
+            <button class="inf-tab active" data-panel="estadistiques" role="tab">📊 Estadístiques</button>
+            <button class="inf-tab" data-panel="valors" role="tab">💡 Valors</button>
+            <button class="inf-tab" data-panel="historia" role="tab">📅 Història</button>
+            <button class="inf-tab" data-panel="serveis" role="tab">🏟️ Serveis</button>
+          </div>
+
+          <div class="inf-panel active" id="panel-estadistiques">
+            <h4 class="fw-bold mb-3" style="font-family:'Montserrat',sans-serif;text-transform:uppercase;font-size:1rem;">Temporada 25/26 · En xifres</h4>
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="stat-row" data-val="68">
+                  <span class="stat-label">Partits guanyats</span>
+                  <div class="stat-bar-wrap"><div class="stat-bar" style="width:68%"></div></div>
+                  <span class="stat-val">68%</span>
+                </div>
+                <div class="stat-row" data-val="74">
+                  <span class="stat-label">Possessió mitjana</span>
+                  <div class="stat-bar-wrap"><div class="stat-bar" style="width:74%"></div></div>
+                  <span class="stat-val">74%</span>
+                </div>
+                <div class="stat-row" data-val="82">
+                  <span class="stat-label">Precisió de passades</span>
+                  <div class="stat-bar-wrap"><div class="stat-bar" style="width:82%"></div></div>
+                  <span class="stat-val">82%</span>
+                </div>
+                <div class="stat-row" data-val="55">
+                  <span class="stat-label">Eficiència de xuts</span>
+                  <div class="stat-bar-wrap"><div class="stat-bar" style="width:55%"></div></div>
+                  <span class="stat-val">55%</span>
+                </div>
+                <div class="stat-row" data-val="91">
+                  <span class="stat-label">Participació de socis</span>
+                  <div class="stat-bar-wrap"><div class="stat-bar" style="width:91%"></div></div>
+                  <span class="stat-val">91%</span>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="row g-3 text-center">
+                  <div class="col-6">
+                    <div style="background:#fff5f5;border-radius:1rem;padding:1.2rem;border:1px solid #ffe0e0;">
+                      <div style="font-size:2rem;font-weight:900;color:var(--fc-red);font-family:'Montserrat',sans-serif;">47</div>
+                      <div style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:#888;">Gols marcats</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div style="background:#fff5f5;border-radius:1rem;padding:1.2rem;border:1px solid #ffe0e0;">
+                      <div style="font-size:2rem;font-weight:900;color:var(--fc-red);font-family:'Montserrat',sans-serif;">18</div>
+                      <div style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:#888;">Gols encaixats</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div style="background:#f5f5f5;border-radius:1rem;padding:1.2rem;border:1px solid #eee;">
+                      <div style="font-size:2rem;font-weight:900;color:#444;font-family:'Montserrat',sans-serif;">25</div>
+                      <div style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:#888;">Jugadors</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div style="background:#f5f5f5;border-radius:1rem;padding:1.2rem;border:1px solid #eee;">
+                      <div style="font-size:2rem;font-weight:900;color:#444;font-family:'Montserrat',sans-serif;">2.400</div>
+                      <div style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:#888;">Socis actius</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel: Valors -->
+          <div class="inf-panel" id="panel-valors">
+            <h4 class="fw-bold mb-3" style="font-family:'Montserrat',sans-serif;text-transform:uppercase;font-size:1rem;">Els valors que ens defineixen</h4>
+            <div class="row g-3">
+              <div class="col-6 col-md-4 col-lg-2">
+                <div class="valor-card">
+                  <div class="valor-icon">💪</div>
+                  <div class="valor-title">Esforç</div>
+                  <div class="valor-desc">Donar el màxim en cada entrenament i partit.</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-2">
+                <div class="valor-card">
+                  <div class="valor-icon">🤝</div>
+                  <div class="valor-title">Respecte</div>
+                  <div class="valor-desc">Cap als rivals, àrbitres i companys.</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-2">
+                <div class="valor-card">
+                  <div class="valor-icon">🏆</div>
+                  <div class="valor-title">Victòria</div>
+                  <div class="valor-desc">Ambició sana per aconseguir els objectius.</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-2">
+                <div class="valor-card">
+                  <div class="valor-icon">🌱</div>
+                  <div class="valor-title">Formació</div>
+                  <div class="valor-desc">Inversió en el talent jove del territori.</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-2">
+                <div class="valor-card">
+                  <div class="valor-icon">🏙️</div>
+                  <div class="valor-title">Comunitat</div>
+                  <div class="valor-desc">Arrelats a Tarragona i a la seva gent.</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-2">
+                <div class="valor-card">
+                  <div class="valor-icon">⚖️</div>
+                  <div class="valor-title">Fair Play</div>
+                  <div class="valor-desc">El joc net com a norma de vida esportiva.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel: Història -->
+          <div class="inf-panel" id="panel-historia">
+            <h4 class="fw-bold mb-3" style="font-family:'Montserrat',sans-serif;text-transform:uppercase;font-size:1rem;">Fets destacats del club</h4>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="d-flex flex-column gap-0">
+
+                  <div class="d-flex gap-3 timeline-item">
+                    <div class="d-flex flex-column align-items-center" style="width:14px;flex-shrink:0;">
+                      <div class="timeline-dot"></div>
+                      <div class="timeline-connector"></div>
+                    </div>
+                    <div>
+                      <div class="timeline-year">1920</div>
+                      <div class="timeline-event">Fundació de l'FC Tarragona per un grup d'aficionats locals.</div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 timeline-item">
+                    <div class="d-flex flex-column align-items-center" style="width:14px;flex-shrink:0;">
+                      <div class="timeline-dot"></div>
+                      <div class="timeline-connector"></div>
+                    </div>
+                    <div>
+                      <div class="timeline-year">1954</div>
+                      <div class="timeline-event">Inauguració de l'Estadi Municipal de Tarragona.</div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 timeline-item">
+                    <div class="d-flex flex-column align-items-center" style="width:14px;flex-shrink:0;">
+                      <div class="timeline-dot"></div>
+                      <div class="timeline-connector"></div>
+                    </div>
+                    <div>
+                      <div class="timeline-year">1978</div>
+                      <div class="timeline-event">Primera Copa Regional guanyada per l'equip masculí sènior.</div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 timeline-item">
+                    <div class="d-flex flex-column align-items-center" style="width:14px;flex-shrink:0;">
+                      <div class="timeline-dot"></div>
+                      <div class="timeline-connector"></div>
+                    </div>
+                    <div>
+                      <div class="timeline-year">2003</div>
+                      <div class="timeline-event">Creació de l'escola de futbol base amb categories des de benjamins.</div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-3 timeline-item">
+                    <div class="d-flex flex-column align-items-center" style="width:14px;flex-shrink:0;">
+                      <div class="timeline-dot"></div>
+                    </div>
+                    <div>
+                      <div class="timeline-year">2025</div>
+                      <div class="timeline-event">Remodelació de l'estadi i inici de la temporada 25/26 amb rècord de socis.</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div style="text-align:center;padding:2rem;">
+                  <div style="font-size:5rem;line-height:1;">⚽</div>
+                  <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:3rem;color:var(--fc-red);">+100</div>
+                  <div style="text-transform:uppercase;letter-spacing:0.15em;font-size:0.8rem;color:#888;">Anys d'història</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inf-panel" id="panel-serveis">
+            <h4 class="fw-bold mb-3" style="font-family:'Montserrat',sans-serif;text-transform:uppercase;font-size:1rem;">Què oferim als nostres socis i aficionats?</h4>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="servei-item">
+                  <div class="servei-num">1</div>
+                  <div class="servei-text">
+                    <strong>Escola de Futbol Base</strong>
+                    <p>Formació per a nens i nenes des dels 6 anys.</p>
+                  </div>
+                </div>
+                <div class="servei-item">
+                  <div class="servei-num">2</div>
+                  <div class="servei-text">
+                    <strong>Primer Equip Masculí</strong>
+                    <p>Competició a la lliga regional i copa.</p>
+                  </div>
+                </div>
+                <div class="servei-item">
+                  <div class="servei-num">3</div>
+                  <div class="servei-text">
+                    <strong>Primer Equip Femení</strong>
+                    <p>Equip femení competitiu creat el 2018.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="servei-item">
+                  <div class="servei-num">4</div>
+                  <div class="servei-text">
+                    <strong>Botiga Oficial</strong>
+                    <p>Merchandising i equipament per a tota l'afició.</p>
+                  </div>
+                </div>
+                <div class="servei-item">
+                  <div class="servei-num">5</div>
+                  <div class="servei-text">
+                    <strong>Abonaments de Soci</strong>
+                    <p>Accés a tots els partits de casa i avantatges exclusius.</p>
+                  </div>
+                </div>
+                <div class="servei-item">
+                  <div class="servei-num">6</div>
+                  <div class="servei-text">
+                    <strong>Campus Esportius</strong>
+                    <p>Campus d'estiu i de Setmana Santa per a joves talents.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         2.4 · MAPA INTERACTIU (ampliat amb info lateral)
+    ══════════════════════════════════════════════════════════ -->
+    <section id="mapa" class="map-section">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-title">On Som</h2>
+          <p class="section-subtitle">Localitza l'Estadi Municipal de Tarragona i planifica la teva visita.</p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-4">
+            <div class="map-info-card">
+              <h4 style="font-family:'Montserrat',sans-serif;font-weight:800;text-transform:uppercase;font-size:1rem;margin-bottom:1.5rem;">Informació de l'estadi</h4>
+
+              <div class="map-info-item">
+                <div class="map-info-icon">📍</div>
+                <div>
+                  <strong style="font-size:0.9rem;">Adreça</strong>
+                  <p style="margin:0;font-size:0.85rem;color:#666;">Estadi Municipal, 43001 Tarragona</p>
+                </div>
+              </div>
+
+              <div class="map-info-item">
+                <div class="map-info-icon">🚗</div>
+                <div>
+                  <strong style="font-size:0.9rem;">Aparcament</strong>
+                  <p style="margin:0;font-size:0.85rem;color:#666;">Pàrquing gratuït els dies de partit</p>
+                </div>
+              </div>
+
+              <div class="map-info-item">
+                <div class="map-info-icon">🚌</div>
+                <div>
+                  <strong style="font-size:0.9rem;">Transport públic</strong>
+                  <p style="margin:0;font-size:0.85rem;color:#666;">Línies 3, 7 i 12. Parada: Estadi Municipal</p>
+                </div>
+              </div>
+
+              <div class="map-info-item">
+                <div class="map-info-icon">🏟️</div>
+                <div>
+                  <strong style="font-size:0.9rem;">Aforament</strong>
+                  <p style="margin:0;font-size:0.85rem;color:#666;">4.200 espectadors</p>
+                </div>
+              </div>
+
+              <div class="map-info-item">
+                <div class="map-info-icon">🕐</div>
+                <div>
+                  <strong style="font-size:0.9rem;">Taquilles</strong>
+                  <p style="margin:0;font-size:0.85rem;color:#666;">Obertes 2h abans dels partits</p>
+                </div>
+              </div>
+
+              <a href="https://maps.google.com/?q=Tarragona+Estadi+Municipal" target="_blank" rel="noopener"
+                 class="btn btn-cta text-white w-100 mt-2" style="font-size:0.85rem;">
+                Obrir en Google Maps
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="map-wrapper" style="height:100%;min-height:360px;">
+              <iframe
+                src="https://maps.google.com/maps?q=tarragona+estadio+municipal&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Localització Estadi Municipal Tarragona"
+                style="width:100%;height:100%;min-height:360px;border:0;display:block;">
+              </iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -697,9 +1605,7 @@
 
           <div class="col-lg-6">
             <div class="contact-card h-100">
-              <p class="mb-4">
-                Tens algun dubte, proposta o vols col·laborar amb el club? Envia’ns un missatge i et respondrem el més aviat possible.
-              </p>
+              <p class="mb-4">Tens algun dubte, proposta o vols col·laborar amb el club? Envia'ns un missatge i et respondrem el més aviat possible.</p>
 
               <form>
                 <div class="mb-3">
@@ -720,7 +1626,7 @@
                 <div class="form-check mb-3">
                   <input class="form-check-input" type="checkbox" id="rgpd" required>
                   <label class="form-check-label small" for="rgpd">
-                    Accepto la <a href="#">Política de privadesa</a> i el tractament de les meves dades d’acord amb el RGPD.
+                    Accepto la <a href="#privadesa">Política de privadesa</a> i el tractament de les meves dades d'acord amb el RGPD.
                   </label>
                 </div>
 
@@ -729,11 +1635,9 @@
             </div>
           </div>
 
-         
           <aside class="col-lg-6">
             <div class="h-100 d-flex flex-column justify-content-between"
                  itemscope itemtype="https://schema.org/Organization">
-
               <meta itemprop="name" content="FC Tarragona">
 
               <div class="mb-4">
@@ -757,21 +1661,13 @@
                 </p>
               </div>
 
-              <div>
-                <h3 class="h5 mb-2">On som</h3>
-                <div class="ratio ratio-16x9 rounded-4 shadow-sm">
-                  <iframe src="https://maps.google.com/maps?q=tarragona&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                          style="border:0;" loading="lazy"
-                          referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-              </div>
-
             </div>
           </aside>
 
         </div>
       </div>
     </section>
+
     <section id="privadesa" class="section-padding bg-light">
       <div class="container">
         <h2 class="section-title text-center mb-4">Política de privadesa</h2>
@@ -791,17 +1687,11 @@
       </div>
     </section>
 
-
-  </main> 
-
-
-
+  </main>
 
   <footer>
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-      <div>
-        &copy; <span id="year"></span> FC Tarragona. Tots els drets reservats.
-      </div>
+      <div>&copy; <span id="year"></span> FC Tarragona. Tots els drets reservats.</div>
       <div class="d-flex gap-3">
         <a href="#privadesa">Política de privadesa</a>
         <a href="#">Avís legal</a>
@@ -810,42 +1700,93 @@
     </div>
   </footer>
 
-
-  <div id="cookie-banner" class="cookie-banner"
-       style="position:fixed; bottom:0; left:0; right:0; background:#262626;
-              color:#fff; padding:15px; display:none; justify-content:space-between;
-              align-items:center; z-index:9999; gap:15px;">
-
-    <p class="m-0">
-      Utilitzem galetes per millorar la navegació i analitzar el trànsit.
-      Pots acceptar-les o rebutjar-les.
-    </p>
-
-    <div class="cookie-buttons d-flex gap-2">
+  <div id="cookie-banner"
+       style="position:fixed;bottom:0;left:0;right:0;background:#262626;color:#fff;padding:15px;display:none;justify-content:space-between;align-items:center;z-index:9999;gap:15px;">
+    <p class="m-0">Utilitzem galetes per millorar la navegació i analitzar el trànsit. Pots acceptar-les o rebutjar-les.</p>
+    <div class="d-flex gap-2">
       <button id="accept-cookies" class="btn btn-warning">Acceptar</button>
       <button id="reject-cookies" class="btn btn-secondary">Rebutjar</button>
     </div>
   </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
+    // ── Any al footer ──
     document.getElementById('year').textContent = new Date().getFullYear();
 
     if (!localStorage.getItem('cookies-accepted')) {
       document.getElementById('cookie-banner').style.display = 'flex';
     }
-
     document.getElementById('accept-cookies').onclick = function () {
-      localStorage.setItem('cookies-accepted', 'yes');
+      localStorage.setItem('cookies-accepted', 'true');
       document.getElementById('cookie-banner').style.display = 'none';
     };
-
     document.getElementById('reject-cookies').onclick = function () {
-      localStorage.setItem('cookies-accepted', 'no');
+      localStorage.setItem('cookies-accepted', 'false');
       document.getElementById('cookie-banner').style.display = 'none';
     };
-  </script>
 
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    (function () {
+      const slides = document.querySelectorAll('.slide');
+      const dots   = document.querySelectorAll('.slide-dot');
+      let current  = 0;
+      let timer    = null;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      function startAuto() {
+        timer = setInterval(() => goTo(current + 1), 4500);
+      }
+      function resetAuto() {
+        clearInterval(timer);
+        startAuto();
+      }
+
+      document.getElementById('prevSlide').addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+      document.getElementById('nextSlide').addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+      dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.index); resetAuto(); }));
+
+      startAuto();
+    })();
+
+    (function () {
+      const tabs   = document.querySelectorAll('.inf-tab');
+      const panels = document.querySelectorAll('.inf-panel');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          panels.forEach(p => p.classList.remove('active'));
+          tab.classList.add('active');
+          const target = document.getElementById('panel-' + tab.dataset.panel);
+          if (target) target.classList.add('active');
+        });
+      });
+    })();
+
+    (function () {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.stat-bar').forEach(bar => {
+              bar.style.width = bar.style.width; 
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+
+      const infPanel = document.getElementById('panel-estadistiques');
+      if (infPanel) observer.observe(infPanel);
+    })();
+  </script>
 
 </body>
 </html>

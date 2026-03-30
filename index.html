@@ -529,6 +529,7 @@
 
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand" href="#inici">
@@ -553,6 +554,7 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <header id="inici" class="hero-section">
     <div class="container">
       <div class="row align-items-center g-4">
@@ -626,25 +628,14 @@
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <div class="video-wrapper">
-            <span class="video-overlay-label">🎬 Temporada 25/26</span>
-            <!-- 
-              INSTRUCCIÓ PER A L'ALUMNE:
-              Substitueix "Video/VideoPromo.mp4" pel camí real del teu vídeo
-              editat amb DaVinci Resolve / Shotcut / Adobe Premiere.
-              El vídeo ha de tenir: mínim 3 clips, música de fons, locució,
-              efectes (zoom, textos animats, logotip, etc.)
-              Durada: entre 30 s i 3 min.
-            -->
+            
             <video
               controls
               preload="metadata"
               poster="Imatges/EstadiFCTarragona.jpg"
               style="background:#000;">
-              <source src="Video/VideoPromoFCTarragona.mp4" type="video/mp4">
-              <!-- Alternativa WebM per a compatibilitat -->
-              <source src="Video/VideoPromoFCTarragona.webm" type="video/webm">
-              El teu navegador no suporta vídeo HTML5.
-              <a href="Video/VideoPromoFCTarragona.mp4" style="color:#fff">Descarrega el vídeo.</a>
+              <source src="Video/Videopromocional.mp4" type="video/mp4">              
+              <a href="Video/Videopromocional.mp4" style="color:#fff">Descarrega el vídeo.</a>
             </video>
           </div>
 
@@ -750,6 +741,7 @@
               </div>
             </div>
 
+            <!-- Diapositiva 3 -->
             <div class="slide">
               <div class="promo-slide promo-slide-3">
                 <span class="promo-accent-circle" style="width:400px;height:400px;bottom:-150px;right:-100px;background:rgba(255,255,255,0.04);"></span>
@@ -760,6 +752,7 @@
               </div>
             </div>
 
+            <!-- Controls -->
             <div class="slideshow-controls">
               <button class="slide-btn" id="prevSlide" aria-label="Anterior">&#8592;</button>
               <button class="slide-btn" id="nextSlide" aria-label="Següent">&#8594;</button>
@@ -1118,6 +1111,7 @@
       </div>
     </section>
 
+    <!-- MERCHANDISING -->
     <section id="merch" class="section-padding bg-light-alt">
       <div class="container">
 
@@ -1233,6 +1227,7 @@
       </div>
     </section>
 
+    <!-- SOBRE -->
     <section id="sobre" class="section-padding">
       <div class="container">
         <div class="text-center mb-4">
@@ -1261,7 +1256,9 @@
       </div>
     </section>
 
-    
+    <!-- ══════════════════════════════════════════════════════════
+         2.5 · INFOGRAFIA INTERACTIVA
+    ══════════════════════════════════════════════════════════ -->
     <section id="infografia" class="infografia-section">
       <div class="container">
         <div class="text-center mb-4">
@@ -1278,6 +1275,7 @@
             <button class="inf-tab" data-panel="serveis" role="tab">🏟️ Serveis</button>
           </div>
 
+          <!-- Panel: Estadístiques -->
           <div class="inf-panel active" id="panel-estadistiques">
             <h4 class="fw-bold mb-3" style="font-family:'Montserrat',sans-serif;text-transform:uppercase;font-size:1rem;">Temporada 25/26 · En xifres</h4>
             <div class="row g-4">
@@ -1461,6 +1459,7 @@
             </div>
           </div>
 
+          <!-- Panel: Serveis -->
           <div class="inf-panel" id="panel-serveis">
             <h4 class="fw-bold mb-3" style="font-family:'Montserrat',sans-serif;text-transform:uppercase;font-size:1rem;">Què oferim als nostres socis i aficionats?</h4>
             <div class="row g-3">
@@ -1594,6 +1593,7 @@
       </div>
     </section>
 
+    <!-- CONTACTE -->
     <section id="contacte" class="section-padding bg-light-alt">
       <div class="container">
 
@@ -1689,6 +1689,7 @@
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
       <div>&copy; <span id="year"></span> FC Tarragona. Tots els drets reservats.</div>
@@ -1700,6 +1701,7 @@
     </div>
   </footer>
 
+  <!-- Cookie banner -->
   <div id="cookie-banner"
        style="position:fixed;bottom:0;left:0;right:0;background:#262626;color:#fff;padding:15px;display:none;justify-content:space-between;align-items:center;z-index:9999;gap:15px;">
     <p class="m-0">Utilitzem galetes per millorar la navegació i analitzar el trànsit. Pots acceptar-les o rebutjar-les.</p>
@@ -1716,6 +1718,7 @@
     // ── Any al footer ──
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // ── Cookies ──
     if (!localStorage.getItem('cookies-accepted')) {
       document.getElementById('cookie-banner').style.display = 'flex';
     }
@@ -1728,6 +1731,7 @@
       document.getElementById('cookie-banner').style.display = 'none';
     };
 
+    // ── Slideshow ──
     (function () {
       const slides = document.querySelectorAll('.slide');
       const dots   = document.querySelectorAll('.slide-dot');
@@ -1757,6 +1761,7 @@
       startAuto();
     })();
 
+    // ── Infografia: tabs ──
     (function () {
       const tabs   = document.querySelectorAll('.inf-tab');
       const panels = document.querySelectorAll('.inf-panel');
@@ -1772,12 +1777,14 @@
       });
     })();
 
+    // ── Infografia: animate stat bars on scroll ──
     (function () {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.querySelectorAll('.stat-bar').forEach(bar => {
-              bar.style.width = bar.style.width; 
+              // La width ja està posada inline; el CSS fa la transició
+              bar.style.width = bar.style.width; // força reflow
             });
           }
         });
